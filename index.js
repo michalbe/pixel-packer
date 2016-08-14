@@ -25,11 +25,13 @@ findFiles('./trash', /.png$/, []).then(function(files) {
 
       // each File starts with width in pixels
       output += pixels.shape[0] + '-';
-      for (var i = 0, j = pixels.data.length; i < j; i += 4) {
-        var color = pixels.data[i].toString(16) + '.' +
-          pixels.data[i+1].toString(16) + '.' +
-          pixels.data[i+2].toString(16) + '.' +
-          pixels.data[i+3].toString(16);
+      var data = pixels.data;
+      for (var i = 0, j = data.length; i < j; i += 4) {
+        var color =
+          (data[i].toString(16) === 'ff' ? '' : data[i].toString(16)) + '.' +
+          (data[i+1].toString(16) === 'ff' ? '' : data[i+1].toString(16)) + '.' +
+          (data[i+2].toString(16) === 'ff' ? '' : data[i+2].toString(16)) + '.' +
+          (data[i+3].toString(16) === 'ff' ? '' : data[i+3].toString(16)) + '.';
 
         var colorOnPalette = _.invert(palette)[color];
         if (!colorOnPalette) {
