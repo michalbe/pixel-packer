@@ -3,7 +3,6 @@
 var findFiles = require('./utils/findFiles');
 var getPixels = require('get-pixels');
 var _ = require('underscore');
-var Q = require('q');
 
 var palette = {};
 
