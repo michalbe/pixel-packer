@@ -35,7 +35,7 @@ findFiles('./trash', /.png$/, []).then(function(files) {
         (data[i].toString(16) === 'ff' ? '' : data[i].toString(16)) + '.' +
         (data[i+1].toString(16) === 'ff' ? '' : data[i+1].toString(16)) + '.' +
         (data[i+2].toString(16) === 'ff' ? '' : data[i+2].toString(16)) + '.' +
-        (data[i+3].toString(16) === 'ff' ? '' : data[i+3].toString(16)) + '.';
+        (data[i+3].toString(16) === 'ff' ? '' : data[i+3].toString(16));
 
         var colorOnPalette = _.invert(palette)[color];
         if (!colorOnPalette) {
