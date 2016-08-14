@@ -6,10 +6,13 @@ var _ = require('underscore');
 
 var palette = {};
 
-var palleteNameHelper = '1234567890qwertyuiopasdfghjklzxcvbnm$!@#%^&*()_+{}[]:\\|<>?,./';
+var palleteNameHelper = '1234567890' +
+  'qwertyuiopasdfghjklzxcvbnm' +
+  '$!@#%^&*()_+{}[]:\\|<>?,./';
+
 var paletteNameHelperIndex = 0;
 
-findFiles('./trash', /.png$/, []).then(function(files) {
+findFiles('./trash', /[.png.jpg.gif]$/, []).then(function(files) {
   var output = '';
   files.forEach(function(file) {
     getPixels(file, function(err, pixels) {
@@ -28,12 +31,14 @@ findFiles('./trash', /.png$/, []).then(function(files) {
 
         var colorOnPalette = _.invert(palette)[color];
         if (!colorOnPalette) {
-          palette[palleteNameHelper[paletteNameHelperIndex]] = color;
+          colorOnPalette = palleteNameHelper[paletteNameHelperIndex];
+          palette[colorOnPalette] = color;
           paletteNameHelperIndex++;
         }
-
+        output += colorOnPalette.toString();
       }
-      console.log(palette);
+      output += '.';
+      console.log(palette, output);
     });
   });
 }).catch(function(error) {
