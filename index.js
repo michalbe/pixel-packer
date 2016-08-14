@@ -39,7 +39,9 @@ findFiles('./trash', /.png$/, []).then(function(files) {
         var colorOnPalette = _.invert(palette)[color];
         if (!colorOnPalette) {
           colorOnPalette = palleteNameHelper[paletteNameHelperIndex];
-
+          if (!colorOnPalette) {
+            throw new Error('Palette limit, too many colors!');
+          }
           palette[colorOnPalette] = color;
           paletteNameHelperIndex++;
         }
