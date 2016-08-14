@@ -8,12 +8,14 @@ var palette = {};
 
 var palleteNameHelper = '1234567890' +
   'qwertyuiopasdfghjklzxcvbnm' +
-  '$!@#%^&*()_+{}[]:\\|<>?,./';
+  '$!@#%^()+*_{}[]:\\|<>?,./';
 
 var paletteNameHelperIndex = 0;
 
-findFiles('./trash', /[.png.jpg.gif]$/, []).then(function(files) {
+findFiles('./trash', /.png$/, []).then(function(files) {
   var output = '';
+  var lastColor = '';
+  var lastColorCount = 0;
   files.forEach(function(file) {
     getPixels(file, function(err, pixels) {
       if (err) {
@@ -35,7 +37,18 @@ findFiles('./trash', /[.png.jpg.gif]$/, []).then(function(files) {
           palette[colorOnPalette] = color;
           paletteNameHelperIndex++;
         }
-        output += colorOnPalette.toString();
+
+        if (lastColor === color) {
+          lastColorCount++;
+        } else {
+          if (lastColorCount === 0) {
+            output += colorOnPalette.toString();
+          } else {
+            output += lastColorCount + '&' + colorOnPalette.toString();
+          }
+          lastColorCount = 0;
+          lastColor = color;
+        }
       }
       output += '.';
       console.log(palette, output);
