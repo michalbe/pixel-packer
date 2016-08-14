@@ -1,7 +1,9 @@
 'use strict';
 
-var getFiles = require('./utils/getFiles');
+var findFiles = require('./utils/findFiles');
 
-getFiles('./trash', /\.png$/, function(file) {
-  console.log('hello', file);
+findFiles('./trash', /.png$/, []).then(function(files) {
+  console.log('hello', files);
+}).catch(function(error) {
+  console.log('Error: ' + error);
 });
