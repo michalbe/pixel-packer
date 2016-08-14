@@ -60,7 +60,9 @@ findFiles('./trash', /.png$/, []).then(function(files) {
 
       console.log(finishedFiles, filesCount);
       if (finishedFiles === filesCount-1) {
-        output = 'var p='+JSON.stringify(palette)+';var m=\'' + output + '\';';
+        output = 'var p=' +
+          JSON.stringify(palette)
+            .replace(/\"([^(\")"]+)\":/g,'$1:')+';var m=\'' + output + '\';';
         console.log(output);
       }
     });
