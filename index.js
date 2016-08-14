@@ -6,8 +6,7 @@ var _ = require('underscore');
 
 var palette = {};
 
-var palleteNameHelper = '1234567890' +
-  'qwertyuiopasdfghjklzxcvbnm' +
+var palleteNameHelper = 'qwertyuiopasdfghjklzxcvbnm' +
   '$!@#%^()+*_{}[]:\\|<>?,./';
 
 var paletteNameHelperIndex = 0;
@@ -40,6 +39,7 @@ findFiles('./trash', /.png$/, []).then(function(files) {
         var colorOnPalette = _.invert(palette)[color];
         if (!colorOnPalette) {
           colorOnPalette = palleteNameHelper[paletteNameHelperIndex];
+
           palette[colorOnPalette] = color;
           paletteNameHelperIndex++;
         }
@@ -50,7 +50,7 @@ findFiles('./trash', /.png$/, []).then(function(files) {
           if (lastColorCount === 0) {
             output += colorOnPalette.toString();
           } else {
-            output += lastColorCount + '&' + colorOnPalette.toString();
+            output += lastColorCount + colorOnPalette.toString();
           }
           lastColorCount = 0;
           lastColor = color;
