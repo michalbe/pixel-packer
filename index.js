@@ -3,6 +3,7 @@
 var findFiles = require('./utils/findFiles');
 var getPixels = require('get-pixels');
 var _ = require('underscore');
+var Q = require('q');
 
 var palette = {};
 
@@ -16,8 +17,12 @@ findFiles('./trash', /.png$/, []).then(function(files) {
   var output = '';
   var lastColor = '';
   var lastColorCount = 0;
-  files.forEach(function(file) {
+  var filesCount = files.length;
+  var finishedFiles = 0;
+  files.forEach(function(file, index) {
     getPixels(file, function(err, pixels) {
+      finishedFiles++;
+
       if (err) {
         console.log('nope');
         return;
@@ -53,7 +58,12 @@ findFiles('./trash', /.png$/, []).then(function(files) {
         }
       }
       output += '.';
-      console.log(palette, output);
+
+      console.log(finishedFiles, filesCount);
+      if (finishedFiles === filesCount-1) {
+        output = 'var p='+JSON.stringify(palette)+';var m=\'' + output + '\';';
+        console.log(output);
+      }
     });
   });
 }).catch(function(error) {
