@@ -19,7 +19,6 @@ GAME.IMG = (function(p,m) {
 
   m = m.split('.');
   m.forEach(function(pixel) {
-    console.log('pix', pixel);
     pixel = pixel.split('-');
     var width = pixel[0];
     pixel = pixel[1];
