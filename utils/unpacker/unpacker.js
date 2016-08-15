@@ -1,7 +1,10 @@
 'use strict';
 /* global p */
 
-(function() {
+var GAME = GAME || {};
+
+GAME.IMG = (function(p,m) {
+  var output = [];
   var palette={};
   for (var i in p) {
     var color = p[i];
@@ -13,9 +16,6 @@
 
     palette[i] = [color[0], color[1], color[2], color[3]];
   }
-
-  //14-q6w4q7we3rwq5we5rwq4w1e4rwq2wq2t3yuwq1wiwqwotwotw1qwp1iwqt4aw1p2iwqt4aw4itw1ot1oawq2wt1w1o3swq3w1qwd3fwq6w4fwq7w1q1w1q8wq2w.
-  console.log(palette);
 
   m = m.split('.');
   m.forEach(function(pixel) {
@@ -51,14 +51,12 @@
     }
 
     // console.log(pixelData);
-    var scale = 10;
+    var scale = 6;
     var canvas = document.createElement('canvas');
     canvas.width = width * scale;
     var height = (pixelData.length/4/width);
     canvas.height = height * scale;
-    var ctx = canvas.getContext('2d');
-    document.body.appendChild(canvas);
-
+    // document.body.appendChild(canvas);
     var ctx = canvas.getContext('2d');
     for (i=0; i < pixelData.length; i+=4) {
       // imgData.data[i] = a;
@@ -68,5 +66,9 @@
 
       ctx.fillRect(x * scale, y * scale, scale, scale);
     }
+
+    output.push(canvas.toDataURL());
   });
-})();
+
+  return output;
+})(p,m);
