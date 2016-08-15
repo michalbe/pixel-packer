@@ -6,12 +6,11 @@ var _ = require('underscore');
 
 var palette = {};
 
-var palleteNameHelper = 'qwertyuiopasdfghjklzxcvbnm' +
-  '$!@#%^()+*_{}[]:\\|<>?,./';
+var palleteNameHelper = 'qwertyuiopasdfghjklzxcvbnm$!@#%^()+*_{}[]:\\|<>?,./';
 
 var paletteNameHelperIndex = 0;
 
-findFiles('./trash', /.png$/, []).then(function(files) {
+findFiles('./trash/yes', /.png$/, []).then(function(files) {
   var output = '';
   var lastColor = '';
   var lastColorCount = 0;
