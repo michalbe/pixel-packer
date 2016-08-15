@@ -19,6 +19,7 @@
 
   m = m.split('.');
   m.forEach(function(pixel) {
+    console.log('pix', pixel);
     pixel = pixel.split('-');
     var width = pixel[0];
     pixel = pixel[1];
@@ -50,15 +51,22 @@
     }
 
     // console.log(pixelData);
+    var scale = 10;
     var canvas = document.createElement('canvas');
-    document.body.appendChild(canvas);
-    canvas.width = width;
-    var height = canvas.height = pixelData.length/4/width;
+    canvas.width = width * scale;
+    var height = (pixelData.length/4/width);
+    canvas.height = height * scale;
     var ctx = canvas.getContext('2d');
-    var imgData = ctx.getImageData(0,0,width,height);
-    pixelData.forEach(function(a,i) {
-      imgData.data[i] = a;
-    });
-    ctx.putImageData(imgData, 0,0);
+    document.body.appendChild(canvas);
+
+    var ctx = canvas.getContext('2d');
+    for (i=0; i < pixelData.length; i+=4) {
+      // imgData.data[i] = a;
+      var x = (i/4) % width;
+      var y = ~~(i/4/width);
+      ctx.fillStyle = "rgba(" + pixelData[i] + ", " + pixelData[i+1] + ", " + pixelData[i+2] + ", " + pixelData[i+3] + ")";
+
+      ctx.fillRect(x * scale, y * scale, scale, scale);
+    }
   });
 })();
