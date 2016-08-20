@@ -67,7 +67,25 @@ GAME.IMG = (function(p,m) {
     }
 
     output.push(canvas.toDataURL());
+
+    // COMENT HERE IN FINAL VERSION
+    var div = document.createElement('div');
+    div.className = 'preview';
+    div.innerHTML = index;
+    index++;
+    div.appendChild(canvas);
+    document.body.appendChild(div);
+    if (index === 6) {
+      for (var col in palette) {
+        div = document.createElement('div');
+        div.className = 'palette';
+        div.innerHTML = col + ' ' + palette[col];
+        div.style.backgroundColor = 'rgba(' + palette[col] + ')';
+        document.body.appendChild(div);
+      }
+    }
   });
+
 
   return output;
 })(p,m);

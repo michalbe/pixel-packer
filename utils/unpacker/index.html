@@ -1,9 +1,28 @@
 <html>
   <head>
     <title>Unpacker test page</title>
+    <style>
+      .preview {
+        display: inline-block;
+        padding: 15px;
+        border: 1px dashed #ccc;
+      }
+
+      .palette {
+        width: 100px;
+        height: 20px;
+        padding: 2px;
+        display: block;
+        color: white;
+        text-shadow: 1px 1px 1px #000;
+        font-size: 10px;
+        border: 0.5px solid #000;
+      }
+    </style>
   </head>
   <script>
-    var p={q:"0.0.0.0",w:"0.0.0.",e:".d3.0.",r:"d6.a8.0.",t:".d5.a9.",y:"d6.a9.79.",u:"...",i:"a9.a9.a9.",o:"d6.d6.d6.",p:"79.79.79.",a:".26.0.",s:"0.d4.d6.",d:"0.a8.aa.",f:".fc.79.",g:"d5.d3.41.",h:"ab.45.0.",j:"7a.43.0.",k:"0.96..",l:"4.33..",z:"30.f9.42.",x:".fb.0.",c:"0.d1.0.",v:"a8.d2.42.",b:"78.a6.42.",n:"d8.49.42.",m:"94.11.0.",$:"1.19.93."};var m='14-q8w1q7w3ew2q5we5rwq5we1tyerwq4w2tw2rwq4wuw2uw2q4w2tw2ywqw4qt4ywqwi2wqwutu1owqwiuiwqwi3pwq1w5i3pwq6w4pwq7w1q1w1q8wq2w.14-q7w2q7w2e1w2q4we6rwq3e3tye1rwq4w6rwq4wuowuow2qw6tw2ywqwuauwt5ywqwa2w1s2rsdwqwuautws4dwqw3tws4dwq4wqw4dwq7w1q1w1q8wq2w.14-q6w4q7wf3gwq5wf5gwq4w1f4gwq2wq2t3hjwq1wpwqwutwutw1qwi1pwqt4yw1i2pwqt4yw4ptw1ut1uywq2wt1w1u3owq3w1qwk3lwq6w4lwq7w1q1w1q8wq2w.14-q7w2q8w1h2w1q5wh5jwq5wtyh2jwq6t2yhjwq2w1qwutwutw1q1wu1wqt4ywq1wu1wqt4ywq2witw1zxzxcwq2wt1w1zxzxcwq3w1qwv3bwq6w4bwq7w1q1w1q8wq2w.14-q6w5q6w1y3w1q5wt3y1wq5wt4ywq1w1qw2tw2ywqwn1w1uw2uw2qwu2w2tw2iwqwu2wo1t1o1iwqwu2two4iwqwu2tw1umu1owqw4qwl3$wq6w4$wq7w1q1w1q8wq2w.14-q6w5q6wk4lwq3w1k5lwq1w1q2whth1jwqwi1wq1t3hjwq1w1iw1utwutw1q2wiwqt4ywq2wiwqt4ywq2witw1kt1kywq2wt1w1k3lwq3w1qwk3lwq6w4lwq7w1q1w1q8wq2w';
+    var index = 0;
+    var p={q:"0.0.0.0",w:"0.0.0.",e:"0.96..",r:"4.33..",t:"ab.45.0.",y:".d5.a9.",u:"7a.43.0.",i:"a9.a9.a9.",o:"...",p:"d6.a9.79.",a:".fc.79.",s:"d5.d3.41.",d:"79.79.79.",f:"d6.d6.d6.",g:".d3.0.",h:"d6.a8.0.",j:"30.f9.42.",k:".fb.0.",l:"0.d1.0.",z:"a8.d2.42.",x:"78.a6.42.",c:"d8.49.42.",v:"94.11.0.",b:"1.19.93.",n:".26.0.",m:"0.d4.d6.","$":"0.a8.aa."};var m='14-q6w5q6we4rwq3w1e5rwq1w1q2wtyt1uwqwi1wq1y3tuwq1w1iw1oywoyw1q2wiwqy4pwq2wiwqy4pwq2wiyw1ey1epwq2wy1w1e3rwq3w1qwe3rwq6w4rwq7w1q1w1q8wq2w.14-q6w4q7wa3swq5wa5swq4w1a4swq2wq2y3tuwq1wdwqwoywoyw1qwi1dwqy4pw1i2dwqy4pw4dyw1oy1opwq2wy1w1o3fwq3w1qwe3rwq6w4rwq7w1q1w1q8wq2w.14-q8w1q7w3gw2q5wg5hwq5wg1ypghwq4w2yw2hwq4wow2ow2q4w2yw2pwqw4qy4pwqwi2wqwoyo1fwqwioiwqwi3dwq1w5i3dwq6w4dwq7w1q1w1q8wq2w.14-q7w2q8w1t2w1q5wt5uwq5wypt2uwq6y2ptuwq2w1qwoywoyw1q1wo1wqy4pwq1wo1wqy4pwq2wiyw1jkjklwq2wy1w1jkjklwq3w1qwz3xwq6w4xwq7w1q1w1q8wq2w.14-q6w5q6w1p3w1q5wy3p1wq5wy4pwq1w1qw2yw2pwqwc1w1ow2ow2qwo2w2yw2iwqwo2wf1y1f1iwqwo2ywf4iwqwo2yw1ovo1fwqw4qwr3bwq6w4bwq7w1q1w1q8wq2w.14-q7w2q7w2g1w2q4wg6hwq3g3ypg1hwq4w6hwq4wofwofw2qw6yw2pwqwonowy5pwqwn2w1m2hm$wqwonoywm4$wqw3ywm4$wq4wqw4$wq7w1q1w1q8wq2w.';
   </script>
   <body>
 
